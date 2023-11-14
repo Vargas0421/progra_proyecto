@@ -1,20 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
-
 /**
  *
  * @author Darry OV
  */
 public class inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form inicio
-     */
     public inicio() {
         initComponents();
+        
+        usuarios usser = new usuarios();
+        usser.setSize(620, 620);
+        usser.setLocation(0, 0);
+        
+        content.removeAll();
+        content.revalidate();
+        content.repaint();
+        
     }
 
     /**
@@ -28,62 +29,91 @@ public class inicio extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BTNregistrar = new javax.swing.JButton();
+        BTNreserva = new javax.swing.JButton();
+        BTNverReservas = new javax.swing.JButton();
+        BTNsalir = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBackground(new java.awt.Color(0, 255, 255));
+        background.setBackground(new java.awt.Color(0, 153, 255));
         background.setName("Background"); // NOI18N
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(0, 255, 255));
         jLabel3.setText("Grupo #5 de proyecto");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, -1));
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 600, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_2.jpg"))); // NOI18N
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, -10, 470, 470));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel1.setText("INICIO");
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jButton1.setText("Registrar usuario");
-        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        BTNregistrar.setBackground(new java.awt.Color(204, 204, 204));
+        BTNregistrar.setFont(new java.awt.Font("Agency FB", 0, 12)); // NOI18N
+        BTNregistrar.setText("Usuarios");
+        background.add(BTNregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 120, -1));
 
-        jButton3.setText("Ver reservas");
-        background.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 120, -1));
+        BTNreserva.setBackground(new java.awt.Color(204, 204, 204));
+        BTNreserva.setFont(new java.awt.Font("Agency FB", 0, 12)); // NOI18N
+        BTNreserva.setText("Reservas");
+        background.add(BTNreserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 120, -1));
 
-        jButton2.setText("hacer reservas");
-        background.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 120, -1));
+        BTNverReservas.setBackground(new java.awt.Color(204, 204, 204));
+        BTNverReservas.setFont(new java.awt.Font("Agency FB", 0, 12)); // NOI18N
+        BTNverReservas.setText("Ver reservas");
+        background.add(BTNverReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 120, -1));
+
+        BTNsalir.setBackground(new java.awt.Color(204, 204, 204));
+        BTNsalir.setFont(new java.awt.Font("Agency FB", 0, 12)); // NOI18N
+        BTNsalir.setText("salir");
+        background.add(BTNsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 50, -1));
+
+        content.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setText("EL contenido de las opciones se vera aqui");
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jLabel4)
+                .addContainerGap(241, Short.MAX_VALUE))
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addComponent(jLabel4)
+                .addContainerGap(353, Short.MAX_VALUE))
+        );
+
+        background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 620, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 886, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 619, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -111,12 +141,14 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNregistrar;
+    private javax.swing.JButton BTNreserva;
+    private javax.swing.JButton BTNsalir;
+    private javax.swing.JButton BTNverReservas;
     private javax.swing.JPanel background;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
