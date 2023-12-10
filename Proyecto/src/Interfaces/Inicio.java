@@ -1,12 +1,28 @@
 package Interfaces;
+
+import Clases.Usuarios;
+import javax.swing.JOptionPane;
+import javax.swing.SingleSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Darry OV
  */
+
+
+
 public class Inicio extends javax.swing.JFrame {
 
+    private DefaultTableModel tblModel;
+    private String[] header = {"ID","Nombre","Apellidos","Correo"};
+
     public Inicio() {
+        
         initComponents();
+        initTableusuario();
+        Usuarios[] usuario = new Usuarios[10];
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -25,7 +41,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jTableMenus = new javax.swing.JTabbedPane();
         Inicio = new javax.swing.JPanel();
-        Usuarios = new javax.swing.JPanel();
+        JPUsuarios = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -53,7 +69,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         consultID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTUsuarios = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         Reservas = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
@@ -71,10 +88,38 @@ public class Inicio extends javax.swing.JFrame {
         jlPersonal = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jLDance = new javax.swing.JLabel();
-        ResYoga = new javax.swing.JPanel();
         ResPersonal = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jSPT = new javax.swing.JScrollPane();
+        jTPersTrain = new javax.swing.JTable();
+        jCHorarioPT = new javax.swing.JComboBox<>();
+        jT_ID_PT = new javax.swing.JTextField();
+        jBRegPT = new javax.swing.JButton();
+        jBEditPT = new javax.swing.JButton();
+        ResYoga = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jSYoga = new javax.swing.JScrollPane();
+        jTYoga = new javax.swing.JTable();
+        jCHorarioYoga = new javax.swing.JComboBox<>();
+        jT_ID_Yoga = new javax.swing.JTextField();
+        jBRegYoga = new javax.swing.JButton();
+        jBEditYoga = new javax.swing.JButton();
         ResCine = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         ResDance = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jT_ID_Dance = new javax.swing.JTextField();
+        jSDance = new javax.swing.JScrollPane();
+        jTDance = new javax.swing.JTable();
+        jBRegDance = new javax.swing.JButton();
+        jCHorarioDance = new javax.swing.JComboBox<>();
+        jBEditDance = new javax.swing.JButton();
         Reportes = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,7 +268,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jTableMenus.addTab("tab1", Inicio);
 
-        Usuarios.setBackground(new java.awt.Color(255, 255, 255));
+        JPUsuarios.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -342,6 +387,11 @@ public class Inicio extends javax.swing.JFrame {
                 jButtonRegistrarMouseClicked(evt);
             }
         });
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
 
@@ -407,18 +457,9 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel8.setText("ID:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Apellidos", "Correo"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTUsuarios);
+
+        jButton1.setText("Buscar");
 
         javax.swing.GroupLayout ConsultarUsuarioLayout = new javax.swing.GroupLayout(ConsultarUsuario);
         ConsultarUsuario.setLayout(ConsultarUsuarioLayout);
@@ -430,23 +471,31 @@ public class Inicio extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3))
                     .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(235, 235, 235)
+                        .addComponent(jButton1))
+                    .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(consultID, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(230, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsultarUsuarioLayout.createSequentialGroup()
+                .addGap(0, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         ConsultarUsuarioLayout.setVerticalGroup(
             ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addGap(35, 35, 35)
+                .addGap(19, 19, 19)
                 .addGroup(ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(consultID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -455,18 +504,18 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel9.add(jtableUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, -40, 550, 540));
 
-        javax.swing.GroupLayout UsuariosLayout = new javax.swing.GroupLayout(Usuarios);
-        Usuarios.setLayout(UsuariosLayout);
-        UsuariosLayout.setHorizontalGroup(
-            UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout JPUsuariosLayout = new javax.swing.GroupLayout(JPUsuarios);
+        JPUsuarios.setLayout(JPUsuariosLayout);
+        JPUsuariosLayout.setHorizontalGroup(
+            JPUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        UsuariosLayout.setVerticalGroup(
-            UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        JPUsuariosLayout.setVerticalGroup(
+            JPUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTableMenus.addTab("tab2", Usuarios);
+        jTableMenus.addTab("tab2", JPUsuarios);
 
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -652,60 +701,267 @@ public class Inicio extends javax.swing.JFrame {
 
         jTabbedReservas.addTab("tab2", ResGYM);
 
-        ResYoga.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout ResYogaLayout = new javax.swing.GroupLayout(ResYoga);
-        ResYoga.setLayout(ResYogaLayout);
-        ResYogaLayout.setHorizontalGroup(
-            ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-        ResYogaLayout.setVerticalGroup(
-            ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
-        );
-
-        jTabbedReservas.addTab("tab3", ResYoga);
-
         ResPersonal.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel9.setText("Personal Training");
+
+        jLabel13.setText("ID Cliente:");
+
+        jLabel14.setText("Horario:");
+
+        jTPersTrain.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Horario"
+            }
+        ));
+        jSPT.setViewportView(jTPersTrain);
+
+        jCHorarioPT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm" }));
+
+        jBRegPT.setText("Registrar");
+
+        jBEditPT.setText("Editar");
 
         javax.swing.GroupLayout ResPersonalLayout = new javax.swing.GroupLayout(ResPersonal);
         ResPersonal.setLayout(ResPersonalLayout);
         ResPersonalLayout.setHorizontalGroup(
             ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResPersonalLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ResPersonalLayout.createSequentialGroup()
+                        .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ResPersonalLayout.createSequentialGroup()
+                                .addComponent(jBRegPT)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBEditPT))
+                            .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jT_ID_PT)
+                                .addComponent(jCHorarioPT, 0, 160, Short.MAX_VALUE)))))
+                .addGap(48, 48, 48))
+            .addGroup(ResPersonalLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ResPersonalLayout.setVerticalGroup(
             ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGroup(ResPersonalLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel9)
+                .addGap(56, 56, 56)
+                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jT_ID_PT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jCHorarioPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBRegPT)
+                    .addComponent(jBEditPT))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(jSPT, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         jTabbedReservas.addTab("tab4", ResPersonal);
 
+        ResYoga.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel10.setText("Yoga ");
+
+        jLabel16.setText("ID Cliente:");
+
+        jLabel17.setText("Horario:");
+
+        jTYoga.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Horario"
+            }
+        ));
+        jSYoga.setViewportView(jTYoga);
+
+        jCHorarioYoga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 pm", "8:00 pm" }));
+
+        jBRegYoga.setText("Registrar");
+        jBRegYoga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegYogaActionPerformed(evt);
+            }
+        });
+
+        jBEditYoga.setText("Editar");
+
+        javax.swing.GroupLayout ResYogaLayout = new javax.swing.GroupLayout(ResYoga);
+        ResYoga.setLayout(ResYogaLayout);
+        ResYogaLayout.setHorizontalGroup(
+            ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ResYogaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResYogaLayout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addComponent(jSYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ResYogaLayout.createSequentialGroup()
+                    .addGap(58, 58, 58)
+                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel17)
+                        .addComponent(jLabel16))
+                    .addGap(18, 18, 18)
+                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ResYogaLayout.createSequentialGroup()
+                            .addComponent(jBRegYoga)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBEditYoga))
+                        .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jT_ID_Yoga)
+                            .addComponent(jCHorarioYoga, 0, 160, Short.MAX_VALUE)))
+                    .addContainerGap(260, Short.MAX_VALUE)))
+        );
+        ResYogaLayout.setVerticalGroup(
+            ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ResYogaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addComponent(jSYoga, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ResYogaLayout.createSequentialGroup()
+                    .addGap(111, 111, 111)
+                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel16)
+                        .addComponent(jT_ID_Yoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17)
+                        .addComponent(jCHorarioYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(34, 34, 34)
+                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBRegYoga)
+                        .addComponent(jBEditYoga))
+                    .addContainerGap(281, Short.MAX_VALUE)))
+        );
+
+        jTabbedReservas.addTab("tab3", ResYoga);
+
         ResCine.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel11.setText("Cine");
 
         javax.swing.GroupLayout ResCineLayout = new javax.swing.GroupLayout(ResCine);
         ResCine.setLayout(ResCineLayout);
         ResCineLayout.setHorizontalGroup(
             ResCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(ResCineLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(520, Short.MAX_VALUE))
         );
         ResCineLayout.setVerticalGroup(
             ResCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGroup(ResCineLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(483, Short.MAX_VALUE))
         );
 
         jTabbedReservas.addTab("tab5", ResCine);
+
+        ResDance.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel12.setText("Classes de baile");
+
+        jLabel15.setText("ID Cliente:");
+
+        jLabel18.setText("Horario:");
+
+        jTDance.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Horario"
+            }
+        ));
+        jSDance.setViewportView(jTDance);
+
+        jBRegDance.setText("Registrar");
+
+        jCHorarioDance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 pm", "8:00 pm" }));
+
+        jBEditDance.setText("Editar");
 
         javax.swing.GroupLayout ResDanceLayout = new javax.swing.GroupLayout(ResDance);
         ResDance.setLayout(ResDanceLayout);
         ResDanceLayout.setHorizontalGroup(
             ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(ResDanceLayout.createSequentialGroup()
+                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ResDanceLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ResDanceLayout.createSequentialGroup()
+                                .addComponent(jBRegDance)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBEditDance))
+                            .addComponent(jCHorarioDance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jT_ID_Dance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ResDanceLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jSDance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         ResDanceLayout.setVerticalGroup(
             ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGroup(ResDanceLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel12)
+                .addGap(37, 37, 37)
+                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jT_ID_Dance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jCHorarioDance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBRegDance)
+                    .addComponent(jBEditDance))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jSDance, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
 
         jTabbedReservas.addTab("tab6", ResDance);
@@ -790,11 +1046,11 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jResCineMouseClicked
 
     private void jlYogaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlYogaMouseClicked
-        jTabbedReservas.setSelectedIndex(2);
+        jTabbedReservas.setSelectedIndex(3);
     }//GEN-LAST:event_jlYogaMouseClicked
 
     private void jlPersonalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPersonalMouseClicked
-        jTabbedReservas.setSelectedIndex(3);
+        jTabbedReservas.setSelectedIndex(2);
     }//GEN-LAST:event_jlPersonalMouseClicked
 
     private void jLDanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLDanceMouseClicked
@@ -804,6 +1060,27 @@ public class Inicio extends javax.swing.JFrame {
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
         
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
+    private void jBRegYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegYogaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBRegYogaActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        int id = Integer.valueOf(jTextID.getText());
+        String nombre = jTextNombre.getText();
+        String apellido = jTextApellido.getText();
+        String correo = jTextCorreo.getText();
+        
+        Usuarios nUsser = new Usuarios(id, nombre, apellido, correo);
+        
+        tblModel.addRow(nUsser.toArray());
+        
+        jTextID.setText("");
+        jTextNombre.setText("");
+        jTextApellido.setText("");
+        jTextCorreo.setText("");
+        
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -843,6 +1120,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ConsultarUsuario;
     private javax.swing.JPanel Inicio;
+    private javax.swing.JPanel JPUsuarios;
     private javax.swing.JPanel RegistroUsuario;
     private javax.swing.JPanel Reportes;
     private javax.swing.JPanel ResCine;
@@ -852,10 +1130,19 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel ResPersonal;
     private javax.swing.JPanel ResYoga;
     private javax.swing.JPanel Reservas;
-    private javax.swing.JPanel Usuarios;
     private javax.swing.JTextField consultID;
+    private javax.swing.JButton jBEditDance;
+    private javax.swing.JButton jBEditPT;
+    private javax.swing.JButton jBEditYoga;
+    private javax.swing.JButton jBRegDance;
+    private javax.swing.JButton jBRegPT;
+    private javax.swing.JButton jBRegYoga;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JComboBox<String> jCHorarioDance;
+    private javax.swing.JComboBox<String> jCHorarioPT;
+    private javax.swing.JComboBox<String> jCHorarioYoga;
     private javax.swing.JLabel jConUsuario;
     private javax.swing.JLabel jLDance;
     private javax.swing.JLabel jLInicio;
@@ -863,6 +1150,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLReservas;
     private javax.swing.JLabel jLUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -870,6 +1166,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -892,9 +1189,18 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jRegUsuario;
     private javax.swing.JLabel jResCine;
     private javax.swing.JLabel jResGym;
+    private javax.swing.JScrollPane jSDance;
+    private javax.swing.JScrollPane jSPT;
+    private javax.swing.JScrollPane jSYoga;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTDance;
+    private javax.swing.JTable jTPersTrain;
+    private javax.swing.JTable jTUsuarios;
+    private javax.swing.JTable jTYoga;
+    private javax.swing.JTextField jT_ID_Dance;
+    private javax.swing.JTextField jT_ID_PT;
+    private javax.swing.JTextField jT_ID_Yoga;
     private javax.swing.JTabbedPane jTabbedReservas;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTabbedPane jTableMenus;
     private javax.swing.JTextField jTextApellido;
     private javax.swing.JTextField jTextCorreo;
@@ -905,4 +1211,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jtableUsuarios;
     private javax.swing.JPanel usuariosInicio;
     // End of variables declaration//GEN-END:variables
+
+    private void initTableusuario() {
+        tblModel = new DefaultTableModel(header,0);
+        jTUsuarios.setModel(tblModel);
+    }
 }
