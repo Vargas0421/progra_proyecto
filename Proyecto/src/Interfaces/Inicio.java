@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Clases.Reservas;
 import Clases.Usuarios;
 import javax.swing.JOptionPane;
 import javax.swing.SingleSelectionModel;
@@ -9,20 +10,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Darry OV
  */
-
-
-
 public class Inicio extends javax.swing.JFrame {
 
     private DefaultTableModel tblModel;
-    private String[] header = {"ID","Nombre","Apellidos","Correo"};
+    private String[] header = {"ID", "Nombre", "Apellidos", "Correo"};
+
+    private DefaultTableModel tblModel2;
+    private String[] header2 = {"ID Usuario", "Nombre cliente", "horario"};
 
     public Inicio() {
-        
+
         initComponents();
         initTableusuario();
-        Usuarios[] usuario = new Usuarios[10];
-        
+
+        initTableRegPT();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -63,14 +65,11 @@ public class Inicio extends javax.swing.JFrame {
         jTextCorreo = new javax.swing.JTextField();
         jTextID = new javax.swing.JTextField();
         jButtonRegistrar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
         ConsultarUsuario = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        consultID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTUsuarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         Reservas = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
@@ -95,7 +94,7 @@ public class Inicio extends javax.swing.JFrame {
         jSPT = new javax.swing.JScrollPane();
         jTPersTrain = new javax.swing.JTable();
         jCHorarioPT = new javax.swing.JComboBox<>();
-        jT_ID_PT = new javax.swing.JTextField();
+        txtNombrePT = new javax.swing.JTextField();
         jBRegPT = new javax.swing.JButton();
         jBEditPT = new javax.swing.JButton();
         ResYoga = new javax.swing.JPanel();
@@ -393,7 +392,12 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegistroUsuarioLayout = new javax.swing.GroupLayout(RegistroUsuario);
         RegistroUsuario.setLayout(RegistroUsuarioLayout);
@@ -420,8 +424,8 @@ public class Inicio extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroUsuarioLayout.createSequentialGroup()
                                 .addComponent(jButtonRegistrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCancelar)))))
-                .addContainerGap(188, Short.MAX_VALUE))
+                                .addComponent(jButtonEditar)))))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         RegistroUsuarioLayout.setVerticalGroup(
             RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,7 +451,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonRegistrar)
-                    .addComponent(jButtonCancelar))
+                    .addComponent(jButtonEditar))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
@@ -455,48 +459,33 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setText("Consultar usuarios");
 
-        jLabel8.setText("ID:");
-
+        jTUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTUsuarios);
-
-        jButton1.setText("Buscar");
 
         javax.swing.GroupLayout ConsultarUsuarioLayout = new javax.swing.GroupLayout(ConsultarUsuario);
         ConsultarUsuario.setLayout(ConsultarUsuarioLayout);
         ConsultarUsuarioLayout.setHorizontalGroup(
             ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                .addGroup(ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jButton1))
-                    .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(consultID, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsultarUsuarioLayout.createSequentialGroup()
                 .addGap(0, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
+            .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ConsultarUsuarioLayout.setVerticalGroup(
             ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addGap(19, 19, 19)
-                .addGroup(ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(consultID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -705,28 +694,32 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel9.setText("Personal Training");
 
-        jLabel13.setText("ID Cliente:");
+        jLabel13.setText("Nombre:");
 
         jLabel14.setText("Horario:");
 
-        jTPersTrain.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Horario"
+        jTPersTrain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTPersTrainMouseClicked(evt);
             }
-        ));
+        });
         jSPT.setViewportView(jTPersTrain);
 
         jCHorarioPT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm" }));
 
         jBRegPT.setText("Registrar");
+        jBRegPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegPTActionPerformed(evt);
+            }
+        });
 
         jBEditPT.setText("Editar");
+        jBEditPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditPTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ResPersonalLayout = new javax.swing.GroupLayout(ResPersonal);
         ResPersonal.setLayout(ResPersonalLayout);
@@ -747,7 +740,7 @@ public class Inicio extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBEditPT))
                             .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jT_ID_PT)
+                                .addComponent(txtNombrePT)
                                 .addComponent(jCHorarioPT, 0, 160, Short.MAX_VALUE)))))
                 .addGap(48, 48, 48))
             .addGroup(ResPersonalLayout.createSequentialGroup()
@@ -763,7 +756,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jT_ID_PT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombrePT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -898,17 +891,6 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel18.setText("Horario:");
 
-        jTDance.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Horario"
-            }
-        ));
         jSDance.setViewportView(jTDance);
 
         jBRegDance.setText("Registrar");
@@ -1058,7 +1040,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jLDanceMouseClicked
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-        
+
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
     private void jBRegYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegYogaActionPerformed
@@ -1070,44 +1052,134 @@ public class Inicio extends javax.swing.JFrame {
         String nombre = jTextNombre.getText();
         String apellido = jTextApellido.getText();
         String correo = jTextCorreo.getText();
-        
+
         Usuarios nUsser = new Usuarios(id, nombre, apellido, correo);
-        
+
         tblModel.addRow(nUsser.toArray());
-        
+
         jTextID.setText("");
         jTextNombre.setText("");
         jTextApellido.setText("");
         jTextCorreo.setText("");
-        
+
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        if (jTUsuarios.getSelectedRowCount() != 1) {
+
+            return;
+
+        }
+
+        int id = Integer.valueOf(jTextID.getText());
+        String nombre = jTextNombre.getText();
+        String apellido = jTextApellido.getText();
+        String correo = jTextCorreo.getText();
+        int fila = jTUsuarios.getSelectedRow();
+
+        Usuarios u = new Usuarios(id, nombre, apellido, correo);
+
+        tblModel.setValueAt(u.getId(), fila, 0);
+        tblModel.setValueAt(u.getNombre(), fila, 1);
+        tblModel.setValueAt(u.getApellidos(), fila, 2);
+        tblModel.setValueAt(u.getCorreo(), fila, 3);
+
+        JOptionPane.showConfirmDialog(null, "El usuario se ha editado correctamente");
+
+        jTextID.setText("");
+        jTextNombre.setText("");
+        jTextApellido.setText("");
+        jTextCorreo.setText("");
+
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
+        if (evt.getClickCount() == 2) {
+            int fila = jTUsuarios.getSelectedRow();
+
+            //String id = (String) tblModel.getValueAt(fila, 0);
+            String nombre = (String) tblModel.getValueAt(fila, 1);
+            String apellido = (String) tblModel.getValueAt(fila, 2);
+            String correo = (String) tblModel.getValueAt(fila, 3);
+
+            //jTextID.setText(id);
+            jTextNombre.setText(nombre);
+            jTextApellido.setText(apellido);
+            jTextCorreo.setText(correo);
+
+        }
+    }//GEN-LAST:event_jTUsuariosMouseClicked
+
+    private void jBRegPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegPTActionPerformed
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+
+        String nombre = txtNombrePT.getText();
+        String horario = jCHorarioPT.getSelectedItem().toString();
+
+        if (jTPersTrain.getRowCount() <= 29) {
+            for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+                if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                    JOptionPane.showConfirmDialog(null, "Reserva aplicada con exito");
+                    Reservas newres = new Reservas(nombre, horario, id);
+
+                    tblModel2.addRow(newres.toArray());
+                } else {
+
+                    JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } else {
+
+            JOptionPane.showConfirmDialog(null, "Cupos llenos");
+
         }
-        //</editor-fold>
+        txtNombrePT.setText("");
+
+    }//GEN-LAST:event_jBRegPTActionPerformed
+
+    private void jBEditPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditPTActionPerformed
+        if (jTPersTrain.getSelectedRowCount() != 1) {
+            return;
+        }
+
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+        String nombre = txtNombrePT.getText();
+        String horario = jCHorarioPT.getSelectedItem().toString();
+        int fila = jTPersTrain.getSelectedRow();
+
+        for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+            if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                Reservas r = new Reservas(nombre, horario, id);
+                tblModel2.setValueAt(r.getIdUsuario(), fila, 0);
+                tblModel2.setValueAt(r.getNombre(), fila, 1);
+                tblModel2.setValueAt(r.getHorario(), fila, 2);
+
+            } else {
+
+                JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
+            }
+        }
+
+    }//GEN-LAST:event_jBEditPTActionPerformed
+
+    private void jTPersTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPersTrainMouseClicked
+        if (evt.getClickCount() == 2) {
+            
+            int fila = jTPersTrain.getSelectedRow();
+            
+            
+            String nombre = (String) tblModel.getValueAt(fila, 1);
+            
+            txtNombrePT.setText(nombre);
+            
+        }
+    }//GEN-LAST:event_jTPersTrainMouseClicked
+
+    public static void main(String args[]) {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1130,15 +1202,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel ResPersonal;
     private javax.swing.JPanel ResYoga;
     private javax.swing.JPanel Reservas;
-    private javax.swing.JTextField consultID;
     private javax.swing.JButton jBEditDance;
     private javax.swing.JButton jBEditPT;
     private javax.swing.JButton jBEditYoga;
     private javax.swing.JButton jBRegDance;
     private javax.swing.JButton jBRegPT;
     private javax.swing.JButton jBRegYoga;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JComboBox<String> jCHorarioDance;
     private javax.swing.JComboBox<String> jCHorarioPT;
@@ -1165,7 +1235,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -1198,7 +1267,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTable jTUsuarios;
     private javax.swing.JTable jTYoga;
     private javax.swing.JTextField jT_ID_Dance;
-    private javax.swing.JTextField jT_ID_PT;
     private javax.swing.JTextField jT_ID_Yoga;
     private javax.swing.JTabbedPane jTabbedReservas;
     private javax.swing.JTabbedPane jTableMenus;
@@ -1209,11 +1277,32 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jlPersonal;
     private javax.swing.JLabel jlYoga;
     private javax.swing.JTabbedPane jtableUsuarios;
+    private javax.swing.JTextField txtNombrePT;
     private javax.swing.JPanel usuariosInicio;
     // End of variables declaration//GEN-END:variables
 
     private void initTableusuario() {
-        tblModel = new DefaultTableModel(header,0);
+        tblModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
         jTUsuarios.setModel(tblModel);
     }
+
+    private void initTableRegPT() {
+
+        tblModel2 = new DefaultTableModel(header2, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+        jTPersTrain.setModel(tblModel2);
+
+    }
+
 }

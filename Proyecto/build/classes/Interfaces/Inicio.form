@@ -515,12 +515,12 @@
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Component id="jButtonRegistrar" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="188" max="32767" attributes="0"/>
+                                      <EmptySpace pref="191" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -552,7 +552,7 @@
                                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jButtonRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButtonEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="104" max="32767" attributes="0"/>
                                   </Group>
@@ -605,10 +605,13 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButtonCancelar">
+                            <Component class="javax.swing.JButton" name="jButtonEditar">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                                <Property name="text" type="java.lang.String" value="Editar"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditarActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -624,29 +627,15 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="consultID" min="-2" pref="196" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                                       <Component id="jScrollPane1" min="-2" pref="520" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -655,15 +644,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="consultID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" pref="362" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="438" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -674,13 +656,6 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Consultar usuarios"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel8">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="ID:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="consultID">
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                               <AuxValues>
@@ -719,14 +694,12 @@
                                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                     </Property>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTUsuariosMouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JButton" name="jButton1">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Buscar"/>
-                              </Properties>
-                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1087,7 +1060,7 @@
                                                       <Component id="jBEditPT" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jT_ID_PT" max="32767" attributes="0"/>
+                                                      <Component id="txtNombrePT" max="32767" attributes="0"/>
                                                       <Component id="jCHorarioPT" pref="160" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1110,7 +1083,7 @@
                                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jT_ID_PT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNombrePT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1137,7 +1110,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel13">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+                                <Property name="text" type="java.lang.String" value="Nombre:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel14">
@@ -1153,15 +1126,9 @@
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="jTPersTrain">
-                                  <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="3" rowCount="4">
-                                        <Column editable="true" title="ID" type="java.lang.Object"/>
-                                        <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                                        <Column editable="true" title="Horario" type="java.lang.Object"/>
-                                      </Table>
-                                    </Property>
-                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTPersTrainMouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1182,17 +1149,23 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jT_ID_PT">
+                            <Component class="javax.swing.JTextField" name="txtNombrePT">
                             </Component>
                             <Component class="javax.swing.JButton" name="jBRegPT">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Registrar"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRegPTActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="jBEditPT">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Editar"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditPTActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1487,12 +1460,27 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="jTDance">
                                   <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="3" rowCount="4">
-                                        <Column editable="true" title="ID" type="java.lang.Object"/>
-                                        <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                                        <Column editable="true" title="Horario" type="java.lang.Object"/>
-                                      </Table>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                     </Property>
                                   </Properties>
                                 </Component>
