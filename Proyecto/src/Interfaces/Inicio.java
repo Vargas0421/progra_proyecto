@@ -17,13 +17,28 @@ public class Inicio extends javax.swing.JFrame {
 
     private DefaultTableModel tblModel2;
     private String[] header2 = {"ID Usuario", "Nombre cliente", "horario"};
+    
+    private DefaultTableModel tblModel3;
+    private String[] header3 = {"ID Usuario", "Nombre cliente", "horario"};
+    
+    private DefaultTableModel tblModel4;
+    private String[] header4 = {"ID Usuario", "Nombre cliente", "horario"};
 
     public Inicio() {
 
         initComponents();
+        
+        //Inicia tabla de usuarios
         initTableusuario();
-
+        
+        //Inicia tabla de reserva de personal training
         initTableRegPT();
+        
+        //Inicia tabla de reserva de yoga 
+        initTableRegY();
+        
+        //
+        initTableRegCD();
 
     }
 
@@ -97,28 +112,31 @@ public class Inicio extends javax.swing.JFrame {
         txtNombrePT = new javax.swing.JTextField();
         jBRegPT = new javax.swing.JButton();
         jBEditPT = new javax.swing.JButton();
+        btnDeletePT = new javax.swing.JButton();
         ResYoga = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jSYoga = new javax.swing.JScrollPane();
         jTYoga = new javax.swing.JTable();
-        jCHorarioYoga = new javax.swing.JComboBox<>();
-        jT_ID_Yoga = new javax.swing.JTextField();
-        jBRegYoga = new javax.swing.JButton();
-        jBEditYoga = new javax.swing.JButton();
+        btnRegYoga = new javax.swing.JButton();
+        btnEditYoga = new javax.swing.JButton();
+        jCYoga = new javax.swing.JComboBox<>();
+        txtNombreY = new javax.swing.JTextField();
+        jBDeleteY = new javax.swing.JButton();
         ResCine = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         ResDance = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jT_ID_Dance = new javax.swing.JTextField();
+        txtNameDance = new javax.swing.JTextField();
         jSDance = new javax.swing.JScrollPane();
         jTDance = new javax.swing.JTable();
-        jBRegDance = new javax.swing.JButton();
         jCHorarioDance = new javax.swing.JComboBox<>();
+        jBRegDance = new javax.swing.JButton();
         jBEditDance = new javax.swing.JButton();
+        btnEliminarD = new javax.swing.JButton();
         Reportes = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -262,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         jTableMenus.addTab("tab1", Inicio);
@@ -406,9 +424,6 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(RegistroUsuarioLayout.createSequentialGroup()
                 .addGroup(RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RegistroUsuarioLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2))
-                    .addGroup(RegistroUsuarioLayout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addGroup(RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -424,15 +439,18 @@ public class Inicio extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroUsuarioLayout.createSequentialGroup()
                                 .addComponent(jButtonRegistrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonEditar)))))
+                                .addComponent(jButtonEditar))))
+                    .addGroup(RegistroUsuarioLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2)))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
         RegistroUsuarioLayout.setVerticalGroup(
             RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegistroUsuarioLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel2)
-                .addGap(135, 135, 135)
+                .addGap(99, 99, 99)
                 .addGroup(RegistroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -475,16 +493,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ConsultarUsuarioLayout.setVerticalGroup(
             ConsultarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ConsultarUsuarioLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -721,32 +739,41 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        btnDeletePT.setText("Eliminar");
+        btnDeletePT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePTActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ResPersonalLayout = new javax.swing.GroupLayout(ResPersonal);
         ResPersonal.setLayout(ResPersonalLayout);
         ResPersonalLayout.setHorizontalGroup(
             ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResPersonalLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ResPersonalLayout.createSequentialGroup()
-                        .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ResPersonalLayout.createSequentialGroup()
-                                .addComponent(jBRegPT)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBEditPT))
-                            .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombrePT)
-                                .addComponent(jCHorarioPT, 0, 160, Short.MAX_VALUE)))))
-                .addGap(48, 48, 48))
             .addGroup(ResPersonalLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResPersonalLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDeletePT)
+                    .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(ResPersonalLayout.createSequentialGroup()
+                            .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel13))
+                            .addGap(18, 18, 18)
+                            .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ResPersonalLayout.createSequentialGroup()
+                                    .addComponent(jBRegPT)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jBEditPT))
+                                .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNombrePT)
+                                    .addComponent(jCHorarioPT, 0, 160, Short.MAX_VALUE))))))
+                .addGap(48, 48, 48))
         );
         ResPersonalLayout.setVerticalGroup(
             ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -765,7 +792,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(ResPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBRegPT)
                     .addComponent(jBEditPT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(btnDeletePT)
+                .addGap(18, 18, 18)
                 .addComponent(jSPT, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -776,45 +805,64 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel10.setText("Yoga ");
 
-        jLabel16.setText("ID Cliente:");
+        jLabel16.setText("Nombre:");
 
         jLabel17.setText("Horario:");
 
-        jTYoga.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Horario"
+        jTYoga.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTYogaMouseClicked(evt);
             }
-        ));
+        });
         jSYoga.setViewportView(jTYoga);
 
-        jCHorarioYoga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 pm", "8:00 pm" }));
-
-        jBRegYoga.setText("Registrar");
-        jBRegYoga.addActionListener(new java.awt.event.ActionListener() {
+        btnRegYoga.setText("Registrar");
+        btnRegYoga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegYogaActionPerformed(evt);
+                btnRegYogaActionPerformed(evt);
             }
         });
 
-        jBEditYoga.setText("Editar");
+        btnEditYoga.setText("Editar");
+        btnEditYoga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditYogaActionPerformed(evt);
+            }
+        });
+
+        jCYoga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 PM", "8:00 PM" }));
+
+        jBDeleteY.setText("Eliminar");
+        jBDeleteY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteYActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ResYogaLayout = new javax.swing.GroupLayout(ResYoga);
         ResYoga.setLayout(ResYogaLayout);
         ResYogaLayout.setHorizontalGroup(
             ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ResYogaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel10)
+                .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ResYogaLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel10))
+                    .addGroup(ResYogaLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCYoga, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(ResYogaLayout.createSequentialGroup()
+                                .addComponent(btnRegYoga)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditYoga))
+                            .addComponent(txtNombreY))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResYogaLayout.createSequentialGroup()
                 .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jSYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBDeleteY)
+                    .addComponent(jSYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
             .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ResYogaLayout.createSequentialGroup()
@@ -822,40 +870,33 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel17)
                         .addComponent(jLabel16))
-                    .addGap(18, 18, 18)
-                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(ResYogaLayout.createSequentialGroup()
-                            .addComponent(jBRegYoga)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jBEditYoga))
-                        .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jT_ID_Yoga)
-                            .addComponent(jCHorarioYoga, 0, 160, Short.MAX_VALUE)))
-                    .addContainerGap(260, Short.MAX_VALUE)))
+                    .addContainerGap(445, Short.MAX_VALUE)))
         );
         ResYogaLayout.setVerticalGroup(
             ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ResYogaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(txtNombreY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegYoga)
+                    .addComponent(btnEditYoga))
+                .addGap(20, 20, 20)
+                .addComponent(jBDeleteY)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSYoga, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
             .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ResYogaLayout.createSequentialGroup()
-                    .addGap(111, 111, 111)
-                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel16)
-                        .addComponent(jT_ID_Yoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(114, 114, 114)
+                    .addComponent(jLabel16)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17)
-                        .addComponent(jCHorarioYoga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(34, 34, 34)
-                    .addGroup(ResYogaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBRegYoga)
-                        .addComponent(jBEditYoga))
-                    .addContainerGap(281, Short.MAX_VALUE)))
+                    .addComponent(jLabel17)
+                    .addContainerGap(347, Short.MAX_VALUE)))
         );
 
         jTabbedReservas.addTab("tab3", ResYoga);
@@ -887,41 +928,65 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel12.setText("Classes de baile");
 
-        jLabel15.setText("ID Cliente:");
+        jLabel15.setText("Nombre:");
 
         jLabel18.setText("Horario:");
 
+        jTDance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTDanceMouseClicked(evt);
+            }
+        });
         jSDance.setViewportView(jTDance);
-
-        jBRegDance.setText("Registrar");
 
         jCHorarioDance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 pm", "8:00 pm" }));
 
+        jBRegDance.setText("Registrar");
+        jBRegDance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegDanceActionPerformed(evt);
+            }
+        });
+
         jBEditDance.setText("Editar");
+        jBEditDance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditDanceActionPerformed(evt);
+            }
+        });
+
+        btnEliminarD.setText("Eliminar");
+        btnEliminarD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ResDanceLayout = new javax.swing.GroupLayout(ResDance);
         ResDance.setLayout(ResDanceLayout);
         ResDanceLayout.setHorizontalGroup(
             ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ResDanceLayout.createSequentialGroup()
-                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ResDanceLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ResDanceLayout.createSequentialGroup()
-                                .addComponent(jBRegDance)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBEditDance))
-                            .addComponent(jCHorarioDance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jT_ID_Dance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(ResDanceLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jSDance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEliminarD)
+                    .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ResDanceLayout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel18)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel12))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ResDanceLayout.createSequentialGroup()
+                                    .addComponent(jBRegDance)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jBEditDance))
+                                .addComponent(jCHorarioDance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNameDance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(ResDanceLayout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addComponent(jSDance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         ResDanceLayout.setVerticalGroup(
@@ -932,7 +997,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jT_ID_Dance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNameDance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -941,7 +1006,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(ResDanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBRegDance)
                     .addComponent(jBEditDance))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btnEliminarD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSDance, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -971,7 +1038,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         ReportesLayout.setVerticalGroup(
             ReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         jTableMenus.addTab("tab4", Reportes);
@@ -1042,10 +1109,6 @@ public class Inicio extends javax.swing.JFrame {
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
 
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
-
-    private void jBRegYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegYogaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBRegYogaActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         int id = Integer.valueOf(jTextID.getText());
@@ -1172,12 +1235,174 @@ public class Inicio extends javax.swing.JFrame {
             int fila = jTPersTrain.getSelectedRow();
             
             
-            String nombre = (String) tblModel.getValueAt(fila, 1);
+            String nombre = (String) tblModel2.getValueAt(fila, 1);
             
             txtNombrePT.setText(nombre);
             
         }
     }//GEN-LAST:event_jTPersTrainMouseClicked
+
+    private void btnDeletePTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePTActionPerformed
+        if (jTPersTrain.getSelectedRowCount() != 1) {
+            
+            return;
+            
+        }
+        int fila = jTPersTrain.getSelectedRow();
+        tblModel2.removeRow(fila);
+    }//GEN-LAST:event_btnDeletePTActionPerformed
+
+    private void btnRegYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegYogaActionPerformed
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+
+        String nombre = txtNombreY.getText();
+        String horario = jCYoga.getSelectedItem().toString();
+
+        if (jTYoga.getRowCount() <= 29) {
+            for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+                if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                    JOptionPane.showConfirmDialog(null, "Reserva aplicada con exito");
+                    Reservas newres = new Reservas(nombre, horario, id);
+
+                    tblModel3.addRow(newres.toArray());
+                } else {
+
+                    JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
+                }
+            }
+        } else {
+
+            JOptionPane.showConfirmDialog(null, "Cupos llenos");
+
+        }
+        txtNombreY.setText("");
+    }//GEN-LAST:event_btnRegYogaActionPerformed
+
+    private void btnEditYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditYogaActionPerformed
+        if (jTYoga.getSelectedRowCount() != 1) {
+            return;
+        }
+
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+        String nombre = txtNombreY.getText();
+        String horario = jCYoga.getSelectedItem().toString();
+        int fila = jTYoga.getSelectedRow();
+
+        for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+            if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                Reservas r = new Reservas(nombre, horario, id);
+                tblModel3.setValueAt(r.getIdUsuario(), fila, 0);
+                tblModel3.setValueAt(r.getNombre(), fila, 1);
+                tblModel3.setValueAt(r.getHorario(), fila, 2);
+
+            } else {
+
+                JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
+            }
+        }
+    }//GEN-LAST:event_btnEditYogaActionPerformed
+
+    private void jTYogaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTYogaMouseClicked
+        if (evt.getClickCount() == 2) {
+            
+            int fila = jTYoga.getSelectedRow();
+            
+            
+            String nombre = (String) tblModel3.getValueAt(fila, 1);
+            
+            txtNombreY.setText(nombre);
+        }
+    }//GEN-LAST:event_jTYogaMouseClicked
+
+    private void jBDeleteYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteYActionPerformed
+        if (jTYoga.getSelectedRowCount() != 1) {
+            
+            return;
+            
+        }
+        int fila = jTYoga.getSelectedRow();
+        tblModel3.removeRow(fila);
+    }//GEN-LAST:event_jBDeleteYActionPerformed
+
+    private void jBRegDanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegDanceActionPerformed
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+
+        String nombre = txtNameDance.getText();
+        String horario = jCHorarioDance.getSelectedItem().toString();
+
+        if (jTDance.getRowCount() <= 29) {
+            for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+                if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                    JOptionPane.showConfirmDialog(null, "Reserva aplicada con exito");
+                    Reservas newres = new Reservas(nombre, horario, id);
+
+                    tblModel4.addRow(newres.toArray());
+                } else {
+
+                    JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
+                }
+            }
+        } else {
+
+            JOptionPane.showConfirmDialog(null, "Cupos llenos");
+
+        }
+        txtNameDance.setText("");
+    }//GEN-LAST:event_jBRegDanceActionPerformed
+
+    private void jBEditDanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditDanceActionPerformed
+         if (jTDance.getSelectedRowCount() != 1) {
+            return;
+        }
+
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Dijite su id de usuario"));
+        String nombre = txtNameDance.getText();
+        String horario = jCHorarioDance.getSelectedItem().toString();
+        int fila = jTDance.getSelectedRow();
+
+        for (int i = 0; i < jTUsuarios.getRowCount(); i++) {
+            if (jTUsuarios.getValueAt(i, 0).equals(id)) {
+
+                Reservas r = new Reservas(nombre, horario, id);
+                tblModel4.setValueAt(r.getIdUsuario(), fila, 0);
+                tblModel4.setValueAt(r.getNombre(), fila, 1);
+                tblModel4.setValueAt(r.getHorario(), fila, 2);
+
+            } else {
+
+                JOptionPane.showConfirmDialog(null, "No existe el id de usuario");
+
+            }
+        }
+    }//GEN-LAST:event_jBEditDanceActionPerformed
+
+    private void jTDanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTDanceMouseClicked
+        if (evt.getClickCount() == 2) {
+            
+            int fila = jTDance.getSelectedRow();
+            
+            
+            String nombre = (String) tblModel4.getValueAt(fila, 1);
+            
+            txtNameDance.setText(nombre);
+        }
+    }//GEN-LAST:event_jTDanceMouseClicked
+
+    private void btnEliminarDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDActionPerformed
+        if (jTDance.getSelectedRowCount() != 1) {
+            
+            return;
+            
+        }
+        int fila = jTDance.getSelectedRow();
+        tblModel4.removeRow(fila);
+    }//GEN-LAST:event_btnEliminarDActionPerformed
 
     public static void main(String args[]) {
 
@@ -1202,17 +1427,20 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel ResPersonal;
     private javax.swing.JPanel ResYoga;
     private javax.swing.JPanel Reservas;
+    private javax.swing.JButton btnDeletePT;
+    private javax.swing.JButton btnEditYoga;
+    private javax.swing.JButton btnEliminarD;
+    private javax.swing.JButton btnRegYoga;
+    private javax.swing.JButton jBDeleteY;
     private javax.swing.JButton jBEditDance;
     private javax.swing.JButton jBEditPT;
-    private javax.swing.JButton jBEditYoga;
     private javax.swing.JButton jBRegDance;
     private javax.swing.JButton jBRegPT;
-    private javax.swing.JButton jBRegYoga;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JComboBox<String> jCHorarioDance;
     private javax.swing.JComboBox<String> jCHorarioPT;
-    private javax.swing.JComboBox<String> jCHorarioYoga;
+    private javax.swing.JComboBox<String> jCYoga;
     private javax.swing.JLabel jConUsuario;
     private javax.swing.JLabel jLDance;
     private javax.swing.JLabel jLInicio;
@@ -1266,8 +1494,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTable jTPersTrain;
     private javax.swing.JTable jTUsuarios;
     private javax.swing.JTable jTYoga;
-    private javax.swing.JTextField jT_ID_Dance;
-    private javax.swing.JTextField jT_ID_Yoga;
     private javax.swing.JTabbedPane jTabbedReservas;
     private javax.swing.JTabbedPane jTableMenus;
     private javax.swing.JTextField jTextApellido;
@@ -1277,7 +1503,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jlPersonal;
     private javax.swing.JLabel jlYoga;
     private javax.swing.JTabbedPane jtableUsuarios;
+    private javax.swing.JTextField txtNameDance;
     private javax.swing.JTextField txtNombrePT;
+    private javax.swing.JTextField txtNombreY;
     private javax.swing.JPanel usuariosInicio;
     // End of variables declaration//GEN-END:variables
 
@@ -1302,6 +1530,32 @@ public class Inicio extends javax.swing.JFrame {
 
         };
         jTPersTrain.setModel(tblModel2);
+
+    }
+
+    private void initTableRegY() {
+        
+        tblModel3 = new DefaultTableModel(header3, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+        jTYoga.setModel(tblModel3);
+        
+    }
+
+    private void initTableRegCD() {
+        
+        tblModel4 = new DefaultTableModel(header4, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+        jTDance.setModel(tblModel4);
 
     }
 
